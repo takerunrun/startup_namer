@@ -9,24 +9,57 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final title = 'Horizontal List';
+
     return MaterialApp(
-      title: 'Fade Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+            HorizontalListView(),
+            HorizontalListView(),
+          ],
+        ),
       ),
-      home: PageView(
+    );
+  }
+}
+
+class HorizontalListView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20.0),
+      height: 200.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
         children: <Widget>[
           Container(
-            color: Colors.pink,
+            width: 160.0,
+            color: Colors.red,
           ),
           Container(
-            color: Colors.cyan,
+            width: 160.0,
+            color: Colors.blue,
           ),
           Container(
-            color: Colors.deepPurple,
+            width: 160.0,
+            color: Colors.green,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.yellow,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.orange,
           ),
         ],
-        physics: BouncingScrollPhysics(),
       ),
     );
   }
