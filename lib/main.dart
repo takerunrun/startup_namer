@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:startupnamer/Cookbook/Animation/AnimatedContainer.dart';
+import 'package:startupnamer/Cookbook/Animation/AnimatedOpacity.dart';
 import 'package:startupnamer/Cookbook/Animation/PhysicsCard.dart';
 import 'package:startupnamer/Cookbook/Animation/Transition.dart';
 import 'package:startupnamer/Home.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'no title',
-      home: AnimatedContainerApp(),
+      home: AnimatedOpacityApp(),
     );
   }
 }
