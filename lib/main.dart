@@ -12,6 +12,7 @@ import 'package:startupnamer/Cookbook/Design/Font.dart';
 import 'package:startupnamer/Cookbook/Design/OrientationListApp.dart';
 import 'package:startupnamer/Cookbook/Design/Snackbar.dart';
 import 'package:startupnamer/Cookbook/Lists/GridList.dart';
+import 'package:startupnamer/Cookbook/Lists/GridListWithHeader.dart';
 import 'package:startupnamer/Home.dart';
 
 void main() => runApp(MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: GridListApp(),
+      home: GridListWithHeader(items: BuildListItems().items(),),
     );
   }
 }
