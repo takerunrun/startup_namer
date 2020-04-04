@@ -22,6 +22,7 @@ import 'package:startupnamer/Cookbook/Navigation/PassArguments.dart';
 import 'package:startupnamer/Cookbook/Navigation/ReturnData.dart';
 import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Cookbook/Navigation/SendData.dart';
+import 'package:startupnamer/CustomScreen/CustomScreen.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
 import 'package:startupnamer/Home.dart';
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: FloatGridListScreen2(),
+      home: CustomScreen(),
     );
   }
 }
