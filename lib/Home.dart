@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:startupnamer/Header.dart';
 
 class FullscreenAppWithoutAppbar extends StatelessWidget {
   @override
@@ -87,7 +88,11 @@ class Home extends StatelessWidget {
       body: SafeArea(
         top: false,
         bottom: false,
-        child: Container(),
+        child: ListView(
+          children: <Widget>[
+            Header()
+          ],
+        ),
       ),
     );
   }
