@@ -8,6 +8,7 @@ import 'package:startupnamer/Cookbook/Animation/AnimatedOpacity.dart';
 import 'package:startupnamer/Cookbook/Animation/PhysicsCard.dart';
 import 'package:startupnamer/Cookbook/Animation/Transition.dart';
 import 'package:startupnamer/Cookbook/Design/Drawer.dart';
+import 'package:startupnamer/Cookbook/Design/Snackbar.dart';
 import 'package:startupnamer/Home.dart';
 
 void main() => runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'no title',
-      home: DrawerApp(title: "Drawer App"),
+      home: SnackBarApp(),
     );
   }
 }
