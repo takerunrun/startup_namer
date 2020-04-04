@@ -5,17 +5,16 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 24),
-      height: 200.0,
-      width: 500,
-      child: FittedBox(
-//        child: Image.network('https://images.unsplash.com/photo-1517030330234-94c4fb948ebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80'),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.network('https://images.unsplash.com/photo-1517030330234-94c4fb948ebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80'),
+        margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24),
+        height: 150.0,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage('https://images.unsplash.com/photo-1517030330234-94c4fb948ebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80')
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          color: Colors.redAccent,
         ),
-        fit: BoxFit.cover,
-      ),
     );
   }
 }
