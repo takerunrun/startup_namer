@@ -15,6 +15,13 @@ class Header extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           color: Colors.redAccent,
         ),
+      child: Center(
+        child: Text(
+          '8:00',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 80),
+        ),
+      ),
     );
   }
 }
