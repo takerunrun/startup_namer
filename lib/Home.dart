@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:startupnamer/Collection.dart';
+import 'package:startupnamer/Group/Group.dart';
 import 'package:startupnamer/Header.dart';
 import 'package:startupnamer/Explore/Explore.dart';
 
@@ -103,7 +104,7 @@ class Home extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
-                  child: Explore(),
+                  child: Group(),
                 )
               ],
             )
