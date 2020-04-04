@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: FloatGridListScreen(),
+      home: FloatGridListScreen2(),
     );
   }
 }
