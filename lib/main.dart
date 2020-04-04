@@ -17,6 +17,7 @@ import 'package:startupnamer/Cookbook/Lists/GridList.dart';
 import 'package:startupnamer/Cookbook/Lists/GridListWithHeader.dart';
 import 'package:startupnamer/Cookbook/Lists/LongList.dart';
 import 'package:startupnamer/Cookbook/Navigation/AnimateAcrossScreens.dart';
+import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Home.dart';
 
 void main() => runApp(MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: AnimateAcrossScreensMainScreen(),
+      home: FirstRoute(),
     );
   }
 }
