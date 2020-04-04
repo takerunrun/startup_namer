@@ -15,6 +15,7 @@ import 'package:startupnamer/Cookbook/Lists/BasicList.dart';
 import 'package:startupnamer/Cookbook/Lists/FloatingAppBar.dart';
 import 'package:startupnamer/Cookbook/Lists/GridList.dart';
 import 'package:startupnamer/Cookbook/Lists/GridListWithHeader.dart';
+import 'package:startupnamer/Cookbook/Lists/LongList.dart';
 import 'package:startupnamer/Home.dart';
 
 void main() => runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: BasicListApp(),
+      home: LongListApp(items: LongListItemBuilder().items(),),
     );
   }
 }
