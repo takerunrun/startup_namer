@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'no title',
-      home: FullscreenAppWithoutAppbar(),
+      home: Home(),
     );
   }
 }

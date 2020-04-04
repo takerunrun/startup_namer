@@ -78,3 +78,17 @@ class FullscreenAppWithAppbar extends StatelessWidget {
     );
   }
 }
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      body: SafeArea(
+        top: false,
+        bottom: false,
+        child: Container(),
+      ),
+    );
+  }
+}
