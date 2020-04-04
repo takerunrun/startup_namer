@@ -110,11 +110,16 @@ class FloatGridListCell2 extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(8),
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: BorderRadius.all(Radius.circular(11)),
               child: Container(
-                color: Colors.blue,
-                width: 40,
-                height: 40,
+                color: Colors.black38,
+                width: 22,
+                height: 22,
+                child: Image.asset(
+                  'images/lock.png',
+                  width: 12,
+                  height: 12,
+                ),
               ),
             ),
           ),
