@@ -11,6 +11,7 @@ import 'package:startupnamer/Cookbook/Design/Drawer.dart';
 import 'package:startupnamer/Cookbook/Design/Font.dart';
 import 'package:startupnamer/Cookbook/Design/OrientationListApp.dart';
 import 'package:startupnamer/Cookbook/Design/Snackbar.dart';
+import 'package:startupnamer/Cookbook/Lists/BasicList.dart';
 import 'package:startupnamer/Cookbook/Lists/FloatingAppBar.dart';
 import 'package:startupnamer/Cookbook/Lists/GridList.dart';
 import 'package:startupnamer/Cookbook/Lists/GridListWithHeader.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: FloatingAppBarApp(),
+      home: BasicListApp(),
     );
   }
 }
