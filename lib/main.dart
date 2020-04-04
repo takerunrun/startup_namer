@@ -18,10 +18,11 @@ import 'package:startupnamer/Cookbook/Lists/GridListWithHeader.dart';
 import 'package:startupnamer/Cookbook/Lists/LongList.dart';
 import 'package:startupnamer/Cookbook/Navigation/AnimateAcrossScreens.dart';
 import 'package:startupnamer/Cookbook/Navigation/NamedRoute.dart';
+import 'package:startupnamer/Cookbook/Navigation/PassArguments.dart';
 import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Home.dart';
 
-void main() => runApp(NamedRouteApp());
+void main() => runApp(PassArgumentsApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: FirstRoute(),
+      home: PassArgumentsApp(),
     );
   }
 }
@@ -47,6 +48,35 @@ class NamedRouteApp extends StatelessWidget {
       routes: {
         '/': (context) => NamedRouteFirstScreen(),
         '/second': (context) => NamedRouteSecondScreen(),
+      },
+    );
+  }
+}
+
+class PassArgumentsApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      onGenerateRoute: (settings) {
+        if (settings.name == PassArgumentsScreen.routeName) {
+          final ScreenArguments args = settings.arguments;
+          return MaterialPageRoute(
+            builder: (context) {
+              return PassArgumentsScreen(
+                title: args.title,
+                message: args.message,
+              );
+            }
+          );
+        }
+        assert(false, 'Need to implement ${settings.name}');
+        return null;
+      },
+      title: 'Navigation with Arguments',
+      home: PassArgumentsHomeScreen(),
+      routes: {
+        ExtractArgumentsScreen.routeName: (context) => ExtractArgumentsScreen(),
       },
     );
   }
