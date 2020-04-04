@@ -3,6 +3,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:startupnamer/Cookbook/Animation/Transition.dart';
 import 'package:startupnamer/Home.dart';
 
 void main() => runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'no title',
-      home: Home(),
+      home: Page1(),
     );
   }
 }
