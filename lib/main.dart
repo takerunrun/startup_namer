@@ -19,10 +19,11 @@ import 'package:startupnamer/Cookbook/Lists/LongList.dart';
 import 'package:startupnamer/Cookbook/Navigation/AnimateAcrossScreens.dart';
 import 'package:startupnamer/Cookbook/Navigation/NamedRoute.dart';
 import 'package:startupnamer/Cookbook/Navigation/PassArguments.dart';
+import 'package:startupnamer/Cookbook/Navigation/ReturnData.dart';
 import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Home.dart';
 
-void main() => runApp(PassArgumentsApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: PassArgumentsApp(),
+      home: ReturnDataHomeScreen(),
     );
   }
 }
