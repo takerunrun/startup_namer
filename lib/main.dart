@@ -3,28 +3,38 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:startupnamer/Home.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = 'Horizontal List';
 
     return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: ListView(
-          scrollDirection: Axis.vertical,
-          children: <Widget>[
-            HorizontalListViewWithHeader(),
-            HorizontalListView(),
-            HorizontalListView(),
-          ],
-        ),
+      title: 'no title',
+      home: FullscreenAppWithoutAppbar(),
+    );
+  }
+}
+
+class HorizontalListHome extends StatelessWidget {
+  final title = 'Horizontal List';
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        backgroundColor: Colors.transparent,
+      ),
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: <Widget>[
+          HorizontalListViewWithHeader(),
+          HorizontalListView(),
+          HorizontalListView(),
+        ],
       ),
     );
   }
@@ -115,3 +125,4 @@ class TabBarDemo extends StatelessWidget {
     );
   }
 }
+
