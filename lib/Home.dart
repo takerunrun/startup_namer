@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:startupnamer/Collection.dart';
 import 'package:startupnamer/Header.dart';
+import 'package:startupnamer/Explore/Explore.dart';
 
 class FullscreenAppWithoutAppbar extends StatelessWidget {
   @override
@@ -88,11 +90,26 @@ class Home extends StatelessWidget {
       body: SafeArea(
         top: false,
         bottom: false,
-        child: ListView(
+        child: Stack(
           children: <Widget>[
-            Header()
+            ListView(
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              padding: const EdgeInsets.only(bottom: 64),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: Header(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: Explore(),
+                )
+              ],
+            )
           ],
-        ),
+        )
+//        child: MaterialIconsViewer(),
       ),
     );
   }
