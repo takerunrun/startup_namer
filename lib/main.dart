@@ -17,10 +17,11 @@ import 'package:startupnamer/Cookbook/Lists/GridList.dart';
 import 'package:startupnamer/Cookbook/Lists/GridListWithHeader.dart';
 import 'package:startupnamer/Cookbook/Lists/LongList.dart';
 import 'package:startupnamer/Cookbook/Navigation/AnimateAcrossScreens.dart';
+import 'package:startupnamer/Cookbook/Navigation/NamedRoute.dart';
 import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Home.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(NamedRouteApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -30,6 +31,23 @@ class MyApp extends StatelessWidget {
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
       home: FirstRoute(),
+    );
+  }
+}
+
+class NamedRouteApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return MaterialApp(
+      title: 'no title',
+      theme: ThemeData(fontFamily: 'Roboto'),
+//      home: FirstRoute(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => NamedRouteFirstScreen(),
+        '/second': (context) => NamedRouteSecondScreen(),
+      },
     );
   }
 }
