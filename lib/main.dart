@@ -24,6 +24,7 @@ import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Cookbook/Navigation/SendData.dart';
 import 'package:startupnamer/CustomScreen/BottomSheet.dart';
 import 'package:startupnamer/CustomScreen/CustomScreen.dart';
+import 'package:startupnamer/CustomScreen/SemiModal.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
 import 'package:startupnamer/Home.dart';
 

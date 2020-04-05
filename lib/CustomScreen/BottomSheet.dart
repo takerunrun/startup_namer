@@ -44,10 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8)
+        ),
+        backgroundColor: Colors.white,
         builder: (builder) {
           return new Container(
             height: 700,
-            color: Colors.red,
             child: new Center(
               child: new Text("Hi ModalSheet"),
             ),
@@ -62,26 +65,102 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text("Flutter BottomSheet"),
       ),
-      body: new Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: new Center(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new RaisedButton(
-                  onPressed: _showPersBottomSheetCallBack,
-                  child: new Text("Persistent"),
+      body: Stack(
+        children: <Widget>[
+          new Center(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new RaisedButton(
+                    onPressed: _showPersBottomSheetCallBack,
+                    child: new Text("Persistent"),
+                  ),
+                  new Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                  ),
+                  new RaisedButton(
+                    onPressed: _showModalSheet,
+                    child: new Text("Modal"),
+                  ),
+                ],
+              )),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black38,
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: Offset(10,10),
+                  )
+                ]
+              ),
+              height: 200,
+              width: 200,
+              child: Card(
+                color: Colors.blue,
+                child: Center(
+                  child: Text('text'),
                 ),
-                new Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 64),
+              child: Container(
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: Offset(0,-10),
+                      )
+                    ]
                 ),
-                new RaisedButton(
-                  onPressed: _showModalSheet,
-                  child: new Text("Modal"),
-                ),
-              ],
-            )),
-      ),
+                height: 64,
+                child: Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: LimitedBox(
+                      maxHeight: 48,
+                      child: Row(
+                        children: <Widget>[
+                          AspectRatio(
+                            aspectRatio: 1,
+                            child: Container(
+                              color: Colors.orange,
+                            ),
+                          ),
+                          SizedBox(width: 24,),
+                          Expanded(
+                            child: Text(
+                              'Text long text',
+                              style: TextStyle(
+                                  fontSize: 16
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 24,),
+                          RaisedButton(
+                            color: Colors.green,
+                            onPressed: () {},
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ),
+            )
+          )
+        ],
+      )
     );
   }
 }
