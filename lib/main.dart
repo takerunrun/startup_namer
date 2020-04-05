@@ -25,6 +25,7 @@ import 'package:startupnamer/Cookbook/Navigation/SendData.dart';
 import 'package:startupnamer/CustomScreen/BottomSheet.dart';
 import 'package:startupnamer/CustomScreen/CustomScreen.dart';
 import 'package:startupnamer/CustomScreen/SemiModal.dart';
+import 'package:startupnamer/CustomScreen/SheetAnimation.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
 import 'package:startupnamer/Home.dart';
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: MyHomePage(),
+      home: SheetAnimationPage(),
     );
   }
 }
