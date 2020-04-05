@@ -51,9 +51,29 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (builder) {
           return new Container(
             height: 700,
-            child: new Center(
-              child: new Text("Hi ModalSheet"),
-            ),
+            child: Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding: EdgeInsets.all(24),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        child: Hero(
+                          tag: 'hero_tag',
+                          child: Image.network(
+                            "https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=674&q=80",
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ),
+                    )
+                  ),
+                )
+              ],
+            )
           );
         });
   }
@@ -133,8 +153,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: <Widget>[
                           AspectRatio(
                             aspectRatio: 1,
-                            child: Container(
-                              color: Colors.orange,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              child: Hero(
+                                tag: 'hero_tag',
+                                child: Image.network(
+                                  "https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=674&q=80",
+                                  fit: BoxFit.cover,
+                                ),
+                              )
                             ),
                           ),
                           SizedBox(width: 24,),
