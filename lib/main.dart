@@ -22,6 +22,7 @@ import 'package:startupnamer/Cookbook/Navigation/PassArguments.dart';
 import 'package:startupnamer/Cookbook/Navigation/ReturnData.dart';
 import 'package:startupnamer/Cookbook/Navigation/RouteNavigate.dart';
 import 'package:startupnamer/Cookbook/Navigation/SendData.dart';
+import 'package:startupnamer/CustomScreen/AdvancedTransition.dart';
 import 'package:startupnamer/CustomScreen/BottomSheet.dart';
 import 'package:startupnamer/CustomScreen/CustomScreen.dart';
 import 'package:startupnamer/CustomScreen/Modal.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: ShowModalScreen(),
+      home: AdvancedTransitionHome(),
     );
   }
 }
