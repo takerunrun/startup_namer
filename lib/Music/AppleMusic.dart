@@ -35,11 +35,14 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
 
   AnimationController _controller;
 
-  double get maxHeight => MediaQuery.of(context).size.height - 64;
+  double get maxHeight => MediaQuery.of(context).size.height - 128;
   double get bottomSheetCornerRadius => lerp(8, 32);
   double get imageTopMargin => lerp(8, 24 + MediaQuery.of(context).padding.top);
   double get imageLeftMargin => lerp(20, 32);
   double get imageSize => lerp(48, MediaQuery.of(context).size.width - 64);
+  double get headerTopMargin => lerp(22, 36 + imageTopMargin + imageSize);
+  double get headerLeftMargin => lerp(imageLeftMargin + imageSize + 16, 32);
+  double get headerFontSize => lerp(16, 24);
   double get playIconSize => lerp(36, 64);
   double get playIconRightMargin => lerp(18, (MediaQuery.of(context).size.width / 2) - 32);
   double get playIconBottomMargin => lerp(14, 110);
@@ -96,6 +99,11 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
                     topMargin: imageTopMargin,
                     leftMargin: imageLeftMargin,
                     size: imageSize,
+                  ),
+                  BottomSheetHeader(
+                    topMargin: headerTopMargin,
+                    leftMargin: headerLeftMargin,
+                    fontSize: headerFontSize,
                   ),
                   PlayIcon(
                     size: playIconSize,
@@ -155,6 +163,36 @@ class MusicImage extends StatelessWidget {
       height: size,
       width: size,
       child: Image.network("https://i.pinimg.com/564x/61/6a/93/616a936fc10afce93c646f5d03ddcf80.jpg"),
+    );
+  }
+}
+
+class BottomSheetHeader extends StatelessWidget {
+  final double fontSize;
+  final double topMargin;
+  final double leftMargin;
+
+  const BottomSheetHeader({
+    Key key,
+    @required this.fontSize,
+    @required this.topMargin,
+    @required this.leftMargin,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Positioned(
+      top: topMargin,
+      left: leftMargin,
+      child: Text(
+        'Booked music',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
     );
   }
 }
