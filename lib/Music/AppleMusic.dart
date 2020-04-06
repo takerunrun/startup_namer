@@ -297,7 +297,7 @@ class _MySliderState extends State<MySlider> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      width: 280,
+      width: MediaQuery.of(context).size.width - 128,
       child: CupertinoSlider(
         value: _sliderValue,
         min: 0,
