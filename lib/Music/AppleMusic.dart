@@ -11,6 +11,7 @@ class AppleMusicBottomSheetScreen extends StatelessWidget {
         children: <Widget>[
           SafeArea(
             child: Container(
+              color: Colors.black12,
               child: Center(
                 child: Text("Apple Music Bottom Sheet"),
               ),
@@ -40,6 +41,8 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
   double get imageLeftMargin => lerp(20, 32);
   double get imageSize => lerp(48, MediaQuery.of(context).size.width - 64);
   double get playIconSize => lerp(36, 64);
+  double get playIconRightMargin => lerp(18, (MediaQuery.of(context).size.width / 2) - 32);
+  double get playIconBottomMargin => lerp(14, 110);
 
   double lerp(double min, double max) => lerpDouble(min, max, _controller.value);
 
@@ -76,7 +79,7 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 0),
               decoration: BoxDecoration(
-                color: Color(0xFF162A49),
+                color: Colors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(bottomSheetCornerRadius)),
                   boxShadow: [
                     BoxShadow(
@@ -94,7 +97,11 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
                     leftMargin: imageLeftMargin,
                     size: imageSize,
                   ),
-                  PlayIcon(size: playIconSize,),
+                  PlayIcon(
+                    size: playIconSize,
+                    rightMargin: playIconRightMargin,
+                    bottomMargin: playIconBottomMargin,
+                  ),
                 ],
               ),
             ),
@@ -154,23 +161,27 @@ class MusicImage extends StatelessWidget {
 
 class PlayIcon extends StatelessWidget {
   final double size;
+  final double rightMargin;
+  final double bottomMargin;
 
   PlayIcon({
     Key key,
-    @required this.size
+    @required this.size,
+    @required this.rightMargin,
+    @required this.bottomMargin,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Positioned(
-      right: 18,
-      bottom: 14,
+      right: rightMargin,
+      bottom: bottomMargin,
       height: size,
       width: size,
       child: Icon(
         Icons.play_arrow,
-        color: Colors.white,
+        color: Colors.black38,
         size: size,
       ),
     );
