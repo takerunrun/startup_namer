@@ -47,7 +47,7 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
   double get headerTopMargin => lerp(22, 36 + imageTopMargin + imageSize);
   double get headerLeftMargin => lerp(imageLeftMargin + imageSize + 16, 32);
   double get headerFontSize => lerp(16, 24);
-  double get subHeaderTopMargin => headerTopMargin + 32;
+  double get subHeaderTopMargin => headerTopMargin + 36;
   double get playIconSize => lerp(36, 64);
   double get playIconRightMargin => lerp(18, (MediaQuery.of(context).size.width / 2) - 32);
   double get playIconBottomMargin => lerp(14, 110);
@@ -213,9 +213,10 @@ class BottomSheetHeader extends StatelessWidget {
         child: Text(
           'せせらぎ',
           style: TextStyle(
-            color: Colors.black,
+            fontFamily: 'NotoSansJP',
+            color: Colors.black87,
             fontSize: fontSize,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
           ),
         ),
       )
