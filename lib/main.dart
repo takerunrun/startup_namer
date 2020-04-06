@@ -30,6 +30,7 @@ import 'package:startupnamer/CustomScreen/Music.dart';
 import 'package:startupnamer/CustomScreen/SemiModal.dart';
 import 'package:startupnamer/CustomScreen/SheetAnimation.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
+import 'package:startupnamer/Music/AppleMusic.dart';
 import 'package:startupnamer/Starter/Home.dart';
 
 void main() => runApp(MyApp());
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: AdvancedTransitionHome(),
+      home: AppleMusicBottomSheetScreen(),
     );
   }
 }
