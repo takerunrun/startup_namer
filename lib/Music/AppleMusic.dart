@@ -253,15 +253,32 @@ class VolumeSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Positioned(
-      bottom: 64,
+      bottom: 32,
       left: 32,
       right: 32,
+      height: 64,
       child: AnimatedOpacity(
         opacity: isVisible ? 1 : 0,
         duration: Duration(milliseconds: 200),
-        child: Center(
-          child: MySlider()
-        ),
+        child: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Icon(
+                Icons.volume_mute
+              ),
+            ),
+            Center(
+              child: MySlider(),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.volume_up
+              ),
+            )
+          ],
+        )
       ),
     );
   }
@@ -279,15 +296,19 @@ class _MySliderState extends State<MySlider> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return CupertinoSlider(
-      value: _sliderValue,
-      min: 0,
-      max: 100,
-      onChanged: (value) {
-        setState(() {
-          _sliderValue = value;
-        });
-      },
+    return Container(
+      width: 280,
+      child: CupertinoSlider(
+        value: _sliderValue,
+        min: 0,
+        max: 100,
+        activeColor: Colors.black26,
+        onChanged: (value) {
+          setState(() {
+            _sliderValue = value;
+          });
+        },
+      ),
     );
   }
 }
