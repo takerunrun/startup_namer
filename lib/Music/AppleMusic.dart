@@ -34,6 +34,8 @@ class BottomSheet extends StatefulWidget {
 
 class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStateMixin {
 
+  bool _isPlaying = true;
+
   AnimationController _controller;
 
   double get maxHeight => MediaQuery.of(context).size.height - 128;
@@ -111,8 +113,9 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
                   VolumeSlider(
                     isVisible: _controller.status == AnimationStatus.completed,
                   ),
-                  PlayIcon(
-                    size: playIconSize,
+                  PlayButton(
+                    isPlaying: _isPlaying,
+                    iconSize: playIconSize,
                     rightMargin: playIconRightMargin,
                     bottomMargin: playIconBottomMargin,
                   ),
@@ -212,14 +215,16 @@ class BottomSheetHeader extends StatelessWidget {
   }
 }
 
-class PlayIcon extends StatelessWidget {
-  final double size;
+class PlayButton extends StatelessWidget {
+  final bool isPlaying;
+  final double iconSize;
   final double rightMargin;
   final double bottomMargin;
 
-  PlayIcon({
+  PlayButton({
     Key key,
-    @required this.size,
+    @required this.isPlaying,
+    @required this.iconSize,
     @required this.rightMargin,
     @required this.bottomMargin,
   }) : super(key: key);
@@ -230,12 +235,18 @@ class PlayIcon extends StatelessWidget {
     return Positioned(
       right: rightMargin,
       bottom: bottomMargin,
-      height: size,
-      width: size,
-      child: Icon(
-        Icons.play_arrow,
-        color: Colors.black38,
-        size: size,
+      height: iconSize,
+      width: iconSize,
+      child: RawMaterialButton(
+        onPressed: () {},
+        child: new Icon(
+          isPlaying ? Icons.pause : Icons.play_arrow,
+          color: Colors.black38,
+          size: iconSize,
+        ),
+        shape: new CircleBorder(),
+        elevation: 0,
+        fillColor: Colors.white,
       ),
     );
   }
