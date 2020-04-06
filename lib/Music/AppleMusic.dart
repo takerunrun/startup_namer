@@ -37,9 +37,10 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
 
   double get maxHeight => MediaQuery.of(context).size.height - 128;
   double get bottomSheetCornerRadius => lerp(8, 32);
-  double get imageTopMargin => lerp(8, 24 + MediaQuery.of(context).padding.top);
+  double get imageTopMargin => lerp(8, 32);
   double get imageLeftMargin => lerp(20, 32);
   double get imageSize => lerp(48, MediaQuery.of(context).size.width - 64);
+  double get imageCornerRadius => lerp(4, 8);
   double get headerTopMargin => lerp(22, 36 + imageTopMargin + imageSize);
   double get headerLeftMargin => lerp(imageLeftMargin + imageSize + 16, 32);
   double get headerFontSize => lerp(16, 24);
@@ -99,6 +100,7 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
                     topMargin: imageTopMargin,
                     leftMargin: imageLeftMargin,
                     size: imageSize,
+                    cornerRadius: imageCornerRadius,
                   ),
                   BottomSheetHeader(
                     topMargin: headerTopMargin,
@@ -146,12 +148,14 @@ class MusicImage extends StatelessWidget {
   final double topMargin;
   final double leftMargin;
   final double size;
+  final double cornerRadius;
   
   const MusicImage({
     Key key,
     @required this.topMargin,
     @required this.leftMargin,
     @required this.size,
+    @required this.cornerRadius,
   }) : super(key: key);
   
   @override
@@ -162,7 +166,14 @@ class MusicImage extends StatelessWidget {
       left: leftMargin,
       height: size,
       width: size,
-      child: Image.network("https://i.pinimg.com/564x/61/6a/93/616a936fc10afce93c646f5d03ddcf80.jpg"),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(cornerRadius),
+        child: Image.network(
+            "https://i.pinimg.com/564x/e6/9e/dc/e69edcea94354077981e0c3770628ae9.jpg",
+          fit: BoxFit.cover,
+//          alignment: Alignment(lerp(1, 0), 0),
+        ),
+      ),
     );
   }
 }
