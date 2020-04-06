@@ -47,6 +47,7 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
   double get headerTopMargin => lerp(22, 36 + imageTopMargin + imageSize);
   double get headerLeftMargin => lerp(imageLeftMargin + imageSize + 16, 32);
   double get headerFontSize => lerp(16, 24);
+  double get subHeaderTopMargin => headerTopMargin + 32;
   double get playIconSize => lerp(36, 64);
   double get playIconRightMargin => lerp(18, (MediaQuery.of(context).size.width / 2) - 32);
   double get playIconBottomMargin => lerp(14, 110);
@@ -109,6 +110,10 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
                     topMargin: headerTopMargin,
                     leftMargin: headerLeftMargin,
                     fontSize: headerFontSize,
+                  ),
+                  BottomSheetSubHeader(
+                    topMargin: subHeaderTopMargin,
+                    isVisible: _controller.status == AnimationStatus.completed,
                   ),
                   VolumeSlider(
                     isVisible: _controller.status == AnimationStatus.completed,
@@ -203,14 +208,52 @@ class BottomSheetHeader extends StatelessWidget {
     return Positioned(
       top: topMargin,
       left: leftMargin,
-      child: Text(
-        'Booked music',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: fontSize,
-          fontWeight: FontWeight.w500,
+      right: leftMargin,
+      child: Center(
+        child: Text(
+          'せせらぎ',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: fontSize,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-      ),
+      )
+    );
+  }
+}
+
+class BottomSheetSubHeader extends StatelessWidget {
+  final double topMargin;
+  final bool isVisible;
+
+  const BottomSheetSubHeader({
+    Key key,
+    @required this.topMargin,
+    @required this.isVisible
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Positioned(
+      top: topMargin,
+      left: 32,
+      right: 32,
+      child: AnimatedOpacity(
+        opacity: isVisible ? 1 : 0,
+        duration: Duration(milliseconds: 200),
+        child: Center(
+          child: Text(
+              '海の声',
+            style: TextStyle(
+              color: Colors.black45,
+              fontSize: 18,
+              fontWeight: FontWeight.w300
+            ),
+          ),
+        ),
+      )
     );
   }
 }
