@@ -23,7 +23,7 @@ class AppleMusicBottomSheetScreen extends StatelessWidget {
   }
 }
 
-const double minHeight = 120;
+const double minHeight = 64;
 
 class BottomSheet extends StatefulWidget {
   @override
@@ -34,7 +34,12 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
 
   AnimationController _controller;
 
-  double get maxHeight => MediaQuery.of(context).size.height;
+  double get maxHeight => MediaQuery.of(context).size.height - 64;
+  double get bottomSheetCornerRadius => lerp(8, 32);
+  double get imageTopMargin => lerp(8, 24 + MediaQuery.of(context).padding.top);
+  double get imageLeftMargin => lerp(20, 32);
+  double get imageSize => lerp(48, MediaQuery.of(context).size.width - 64);
+  double get playIconSize => lerp(36, 64);
 
   double lerp(double min, double max) => lerpDouble(min, max, _controller.value);
 
@@ -63,20 +68,33 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
           height: lerp(minHeight, maxHeight),
           left: 0,
           right: 0,
-          bottom: 0,
+          bottom: 64,
           child: GestureDetector(
             onTap: _toggle,
             onVerticalDragUpdate: _handleDragUpdate,
             onVerticalDragEnd: _handleDragEnd,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              decoration: const BoxDecoration(
+              padding: const EdgeInsets.symmetric(horizontal: 0),
+              decoration: BoxDecoration(
                 color: Color(0xFF162A49),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(bottomSheetCornerRadius)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: Offset(0,-10),
+                    )
+                  ]
               ),
               child: Stack(
                 children: <Widget>[
-
+                  MusicImage(
+                    topMargin: imageTopMargin,
+                    leftMargin: imageLeftMargin,
+                    size: imageSize,
+                  ),
+                  PlayIcon(size: playIconSize,),
                 ],
               ),
             ),
@@ -106,5 +124,55 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
     } else {
       _controller.fling(velocity: _controller.value < 0.5 ? -2.0 : 2.0);
     }
+  }
+}
+
+class MusicImage extends StatelessWidget {
+  final double topMargin;
+  final double leftMargin;
+  final double size;
+  
+  const MusicImage({
+    Key key,
+    @required this.topMargin,
+    @required this.leftMargin,
+    @required this.size,
+  }) : super(key: key);
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Positioned(
+      top: topMargin,
+      left: leftMargin,
+      height: size,
+      width: size,
+      child: Image.network("https://i.pinimg.com/564x/61/6a/93/616a936fc10afce93c646f5d03ddcf80.jpg"),
+    );
+  }
+}
+
+class PlayIcon extends StatelessWidget {
+  final double size;
+
+  PlayIcon({
+    Key key,
+    @required this.size
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Positioned(
+      right: 18,
+      bottom: 14,
+      height: size,
+      width: size,
+      child: Icon(
+        Icons.play_arrow,
+        color: Colors.white,
+        size: size,
+      ),
+    );
   }
 }
