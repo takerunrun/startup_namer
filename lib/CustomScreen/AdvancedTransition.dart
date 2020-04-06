@@ -95,6 +95,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                     fontSize: headerFontSize,
                     topMargin: headerTopMargin,
                   ),
+                  for (Event event in events) _buildFullItem(event),
                   for (Event event in events) _buildIcon(event),
                 ],
               ),
@@ -123,6 +124,19 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
           alignment: Alignment(lerp(1, 0), 0),
         ),
       ),
+    );
+  }
+
+  Widget _buildFullItem(Event event) {
+    int index = events.indexOf(event);
+    return ExpandedEventItem(
+      topMargin: iconTopMargin(index),
+      leftMargin: iconLeftMargin(index),
+      height: iconSize,
+      isVisible: _controller.status == AnimationStatus.completed,
+      borderRadius: itemBorderRadius,
+      title: event.title,
+      date: event.date,
     );
   }
 
@@ -201,4 +215,95 @@ class Event {
   final String date;
 
   Event(this.assetName, this.title, this.date);
+}
+
+class ExpandedEventItem extends StatelessWidget {
+  final double topMargin;
+  final double leftMargin;
+  final double height;
+  final bool isVisible;
+  final double borderRadius;
+  final String title;
+  final String date;
+
+  const ExpandedEventItem({
+    Key key,
+    this.topMargin,
+    this.leftMargin,
+    this.height,
+    this.isVisible,
+    this.borderRadius,
+    this.title,
+    this.date
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Positioned(
+      top: topMargin,
+      left: leftMargin,
+      right: 0,
+      height: height,
+      child: AnimatedOpacity(
+        opacity: isVisible ? 1 : 0,
+        duration: Duration(milliseconds: 200),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(borderRadius),
+            color: Colors.white
+          ),
+          padding: EdgeInsets.only(left: height).add(EdgeInsets.all(8)),
+          child: _buildContent(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent() {
+    return Column(
+      children: <Widget>[
+        Text(title, style: TextStyle(fontSize: 16),),
+        SizedBox(height: 8,),
+        Row(
+          children: <Widget>[
+            Text(
+              '1 ticket',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+                color: Colors.grey.shade600,
+              ),
+            ),
+            SizedBox(width: 8,),
+            Text(
+              date,
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 12,
+                color: Colors.grey,
+              ),
+            )
+          ],
+        ),
+        Spacer(),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.place,
+              color: Colors.grey.shade400,
+              size: 16,
+            ),
+            Text(
+              'Science Park 10 25A',
+              style: TextStyle(
+                color: Colors.grey.shade400,
+                fontSize: 13
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
 }
