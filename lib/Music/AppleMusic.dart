@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class AppleMusicBottomSheetScreen extends StatelessWidget {
   @override
@@ -106,6 +107,9 @@ class _BottomSheetState extends State<BottomSheet> with SingleTickerProviderStat
                     topMargin: headerTopMargin,
                     leftMargin: headerLeftMargin,
                     fontSize: headerFontSize,
+                  ),
+                  VolumeSlider(
+                    isVisible: _controller.status == AnimationStatus.completed,
                   ),
                   PlayIcon(
                     size: playIconSize,
@@ -233,6 +237,57 @@ class PlayIcon extends StatelessWidget {
         color: Colors.black38,
         size: size,
       ),
+    );
+  }
+}
+
+class VolumeSlider extends StatelessWidget {
+  final bool isVisible;
+
+  const VolumeSlider({
+    Key key,
+    this.isVisible
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Positioned(
+      bottom: 64,
+      left: 32,
+      right: 32,
+      child: AnimatedOpacity(
+        opacity: isVisible ? 1 : 0,
+        duration: Duration(milliseconds: 200),
+        child: Center(
+          child: MySlider()
+        ),
+      ),
+    );
+  }
+}
+
+class MySlider extends StatefulWidget {
+  @override
+  _MySliderState createState() => _MySliderState();
+}
+
+class _MySliderState extends State<MySlider> {
+
+  double _sliderValue = 50;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return CupertinoSlider(
+      value: _sliderValue,
+      min: 0,
+      max: 100,
+      onChanged: (value) {
+        setState(() {
+          _sliderValue = value;
+        });
+      },
     );
   }
 }
