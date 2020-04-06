@@ -30,7 +30,7 @@ import 'package:startupnamer/CustomScreen/Music.dart';
 import 'package:startupnamer/CustomScreen/SemiModal.dart';
 import 'package:startupnamer/CustomScreen/SheetAnimation.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
-import 'package:startupnamer/Home.dart';
+import 'package:startupnamer/Starter/Home.dart';
 
 void main() => runApp(MyApp());
 
