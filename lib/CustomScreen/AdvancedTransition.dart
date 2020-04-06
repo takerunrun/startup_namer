@@ -24,6 +24,12 @@ class AdvancedTransitionHome extends StatelessWidget {
 }
 
 const double minHeight = 120;
+const double iconStartSize = 44;
+const double iconEndSize = 120;
+const double iconStartMarginTop = 36;
+const double iconEndMarginTop = 80;
+const double iconsVerticalSpacing = 24;
+const double iconsHorizontalSpacing = 16;
 
 class ExhibitionBottomSheet extends StatefulWidget {
   @override
@@ -35,6 +41,15 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   AnimationController _controller; //<-- Create a controller
 
   double get maxHeight => MediaQuery.of(context).size.height; //<-- Get max height of the screen
+  double get headerTopMargin => lerp(20, 20 + MediaQuery.of(context).padding.top);
+  double get headerFontSize => lerp(14, 24);
+  double get itemBorderRadius => lerp(8, 24);
+  double get iconSize => lerp(iconStartSize, iconEndSize);
+  double iconTopMargin(int index) => lerp(iconStartMarginTop, iconEndMarginTop + index * (iconsVerticalSpacing + iconEndSize)) + headerTopMargin;
+  double iconLeftMargin(int index) => lerp(index * (iconsHorizontalSpacing + iconStartSize), 0);
+
+  double lerp(double min, double max) =>
+      lerpDouble(min, max, _controller.value); //<-- lerp any value based on the controller
 
   @override
   void initState() {
@@ -51,10 +66,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     super.dispose();
   }
 
-  double get headerTopMargin => lerp(20, 20 + MediaQuery.of(context).padding.top);
-  double get headerFontSize => lerp(14, 24);
-  double lerp(double min, double max) =>
-      lerpDouble(min, max, _controller.value); //<-- lerp any value based on the controller
+
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +94,35 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                   SheetHeader(
                     fontSize: headerFontSize,
                     topMargin: headerTopMargin,
-                  )
+                  ),
+                  for (Event event in events) _buildIcon(event),
                 ],
               ),
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildIcon(Event event) {
+    int index = events.indexOf(event);
+    return Positioned(
+      height: iconSize,
+      width: iconSize,
+      top: iconTopMargin(index),
+      left: iconLeftMargin(index),
+      child: ClipRRect(
+        borderRadius: BorderRadius.horizontal(
+          left: Radius.circular(itemBorderRadius),
+          right: Radius.circular(itemBorderRadius)
+        ),
+        child: Image.network(
+          event.assetName,
+          fit: BoxFit.cover,
+          alignment: Alignment(lerp(1, 0), 0),
+        ),
+      ),
     );
   }
 
@@ -153,4 +187,18 @@ class SheetHeader extends StatelessWidget {
       ),
     );
   }
+}
+
+final List<Event> events = [
+  Event('https://i.pinimg.com/564x/bd/15/84/bd15847c98a359c23bb0e41b66786365.jpg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
+  Event('https://i.pinimg.com/564x/e9/53/40/e953402ff8d358b1246e463c0230af79.jpg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
+  Event('https://i.pinimg.com/564x/61/6a/93/616a936fc10afce93c646f5d03ddcf80.jpg', 'Dawan District Guangdong Hong Kong', '4.28-31'),
+];
+
+class Event {
+  final String assetName;
+  final String title;
+  final String date;
+
+  Event(this.assetName, this.title, this.date);
 }
