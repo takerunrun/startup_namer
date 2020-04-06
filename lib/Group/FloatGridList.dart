@@ -77,9 +77,9 @@ class FloatGridListScreen2 extends StatelessWidget {
           title: Text("Floating GridList"),
         ),
         body: GridView.count(
-          padding: EdgeInsets.all(8),
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
+          padding: EdgeInsets.all(16),
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
           crossAxisCount: 2,
           children: List.generate(items.length, (index) {
             return FloatGridListCell2();
