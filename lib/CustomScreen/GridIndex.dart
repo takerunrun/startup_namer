@@ -5,10 +5,13 @@ class GridIndexScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: GridMixin(),
-      ),
+      body: Stack(
+        children: <Widget>[
+          SafeArea(
+            child: GridMixin(),
+          )
+        ],
+      )
     );
   }
 }
@@ -22,8 +25,11 @@ class GridMixin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return CustomScrollView(
-      slivers: section()..addAll(section())
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: CustomScrollView(
+          slivers: section()..addAll(section())
+      ),
     );
   }
 
@@ -38,12 +44,15 @@ class GridMixin extends StatelessWidget {
           )
         ]),
       ),
+//      SliverPadding(
+//        padding: EdgeInsets.only(bottom: 30),
+//      ),
       SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 16,
             crossAxisSpacing: 16,
             crossAxisCount: 2,
-          childAspectRatio: 0.74
+          childAspectRatio: 0.74,
         ),
         delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
@@ -66,14 +75,27 @@ class FloatGridListCell extends StatelessWidget {
       children: <Widget>[
         Container(
           constraints: BoxConstraints.expand(),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            child: Image.network(
-              "https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=674&q=80",
-              fit: BoxFit.cover,
-            ),
+          child: Card(
+            child: Text('Text'),
+            elevation: 10,
           ),
         ),
+//        Container(
+//          decoration: BoxDecoration(
+//            boxShadow: [BoxShadow(
+//              color: Colors.black45,
+//              blurRadius: 10
+//            )]
+//          ),
+//          constraints: BoxConstraints.expand(),
+//          child: ClipRRect(
+//            borderRadius: BorderRadius.all(Radius.circular(8)),
+//            child: Image.network(
+//              "https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=674&q=80",
+//              fit: BoxFit.cover,
+//            ),
+//          ),
+//        ),
         Align(
           alignment: Alignment.topLeft,
           child: Container(
@@ -140,7 +162,7 @@ class FloatGridListCell extends StatelessWidget {
                 fontSize: 16
             ),
           ),
-        )
+        ),
       ],
     );
   }
