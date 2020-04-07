@@ -32,18 +32,36 @@ class GridMixin extends StatelessWidget {
 
   List<Widget> section() {
     return <Widget>[
-      SliverList(
-        delegate: SliverChildListDelegate([
-          Column(
-            children: <Widget>[
-              Text('example', style: TextStyle(fontSize: 30.0, color: Colors.amber),),
-            ],
-          )
-        ]),
+      _buildHeader(),
+      SliverPadding(
+        padding: EdgeInsets.fromLTRB(16, 32, 16, 8),
+        sliver: SliverList(
+          delegate: SliverChildListDelegate([
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                height: 32,
+                width: 128,
+                decoration: BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.all(Radius.circular(16))
+                ),
+                child: Center(
+                  child: Text(
+                      '海の声',
+                    style: TextStyle(
+                      fontFamily: 'NotoSansJP',
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ]),
+        ),
       ),
-//      SliverPadding(
-//        padding: EdgeInsets.only(bottom: 30),
-//      ),
       SliverPadding(
         padding: EdgeInsets.symmetric(horizontal: 16),
         sliver: SliverGrid(
@@ -59,11 +77,34 @@ class GridMixin extends StatelessWidget {
                   child: FloatGridListCell(),
                 );
               },
-              childCount: 10
+              childCount: 5
           ),
         ),
       )
     ];
+  }
+  
+  Widget _buildHeader() {
+    return SliverPadding(
+      padding: EdgeInsets.all(16),
+      sliver: SliverList(
+        delegate: SliverChildListDelegate([
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: [BoxShadow(
+                color: Colors.black26,
+                blurRadius: 16
+              )]
+            ),
+//            constraints: BoxConstraints.expand(),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              child: Image.network('https://i.pinimg.com/564x/f6/45/51/f6455156089967c9b421335e13a00d6f.jpg'),
+            ),
+          )
+        ]),
+      ),
+    );
   }
 }
 
@@ -76,8 +117,9 @@ class FloatGridListCell extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             boxShadow: [BoxShadow(
-              color: Colors.black45,
-              blurRadius: 10
+              color: Colors.black26,
+              blurRadius: 16,
+              offset: Offset(0, 8)
             )]
           ),
           constraints: BoxConstraints.expand(),
