@@ -8,7 +8,11 @@ class AudioCollection extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         _buildHeader(context),
-      ]..addAll(section(context))..addAll(section(context)),
+      ]..addAll(section(context))..addAll(section(context))..add(
+        SliverPadding(
+          padding: EdgeInsets.only(bottom: 64),
+        )
+      ),
     );
   }
 
