@@ -35,7 +35,7 @@ import 'package:startupnamer/Group/FloatGridList.dart';
 import 'package:startupnamer/Music/AppleMusic.dart';
 import 'package:startupnamer/Starter/Home.dart';
 
-void main() => runApp(SliverPaddingApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: ExamplesPage(),
+      home: GridIndexScreen(),
     );
   }
 }
