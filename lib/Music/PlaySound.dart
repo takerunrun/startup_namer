@@ -21,6 +21,7 @@ class _PlaySoundScreenState extends State<PlaySoundScreen> {
 
   void initPlayer() {
     advancedPlayer = AudioPlayer();
+    advancedPlayer.setReleaseMode(ReleaseMode.LOOP);
     audioCache = AudioCache(fixedPlayer: advancedPlayer);
 
     advancedPlayer.durationHandler = (d) => setState(() {
