@@ -26,13 +26,15 @@ class GridMixin extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return CustomScrollView(
-        slivers: section(context)..addAll(section(context))
+//        slivers: section(context)..addAll(section(context))
+    slivers: <Widget>[
+      _buildHeader(context),
+    ]..addAll(section(context))..addAll(section(context)),
     );
   }
 
   List<Widget> section(BuildContext context) {
     return <Widget>[
-      _buildHeader(context),
       SliverPadding(
         padding: EdgeInsets.fromLTRB(16, 32, 16, 8),
         sliver: SliverList(
