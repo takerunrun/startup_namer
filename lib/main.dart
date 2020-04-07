@@ -30,11 +30,12 @@ import 'package:startupnamer/CustomScreen/Modal.dart';
 import 'package:startupnamer/CustomScreen/Music.dart';
 import 'package:startupnamer/CustomScreen/SemiModal.dart';
 import 'package:startupnamer/CustomScreen/SheetAnimation.dart';
+import 'package:startupnamer/CustomScreen/SliverPadding.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
 import 'package:startupnamer/Music/AppleMusic.dart';
 import 'package:startupnamer/Starter/Home.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(SliverPaddingApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: GridIndexScreen(),
+      home: ExamplesPage(),
     );
   }
 }
