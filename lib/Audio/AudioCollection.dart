@@ -6,7 +6,6 @@ class AudioCollection extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return CustomScrollView(
-//        slivers: section(context)..addAll(section(context))
       slivers: <Widget>[
         _buildHeader(context),
       ]..addAll(section(context))..addAll(section(context)),
@@ -68,7 +67,7 @@ class AudioCollection extends StatelessWidget {
 
   Widget _buildHeader(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 80, 16, 8),
       sliver: SliverList(
         delegate: SliverChildListDelegate([
           Container(
