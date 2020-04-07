@@ -82,7 +82,6 @@ class AudioCollection extends StatelessWidget {
                     blurRadius: 16
                 )]
             ),
-//            constraints: BoxConstraints.expand(),
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(8)),
               child: Image.network(
