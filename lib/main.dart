@@ -29,6 +29,7 @@ import 'package:startupnamer/CustomScreen/CustomScreen.dart';
 import 'package:startupnamer/CustomScreen/GridIndex.dart';
 import 'package:startupnamer/CustomScreen/Modal.dart';
 import 'package:startupnamer/CustomScreen/Music.dart';
+import 'package:startupnamer/CustomScreen/ProviderEx.dart';
 import 'package:startupnamer/CustomScreen/SemiModal.dart';
 import 'package:startupnamer/CustomScreen/SheetAnimation.dart';
 import 'package:startupnamer/CustomScreen/SliverPadding.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: PlaySoundScreen(),
+      home: ProviderEx(),
     );
   }
 }
