@@ -26,13 +26,13 @@ class GridMixin extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return CustomScrollView(
-        slivers: section()..addAll(section())
+        slivers: section(context)..addAll(section(context))
     );
   }
 
-  List<Widget> section() {
+  List<Widget> section(BuildContext context) {
     return <Widget>[
-      _buildHeader(),
+      _buildHeader(context),
       SliverPadding(
         padding: EdgeInsets.fromLTRB(16, 32, 16, 8),
         sliver: SliverList(
@@ -84,12 +84,13 @@ class GridMixin extends StatelessWidget {
     ];
   }
   
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return SliverPadding(
       padding: EdgeInsets.all(16),
       sliver: SliverList(
         delegate: SliverChildListDelegate([
           Container(
+            height: MediaQuery.of(context).size.width * 0.66,
             decoration: BoxDecoration(
               boxShadow: [BoxShadow(
                 color: Colors.black26,
@@ -99,7 +100,10 @@ class GridMixin extends StatelessWidget {
 //            constraints: BoxConstraints.expand(),
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(8)),
-              child: Image.network('https://i.pinimg.com/564x/f6/45/51/f6455156089967c9b421335e13a00d6f.jpg'),
+              child: Image.network(
+                'https://i.pinimg.com/474x/25/7d/df/257ddf9575c61ebca115d0946c22f56b.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           )
         ]),
