@@ -286,7 +286,7 @@ class GridViewBuilderPage extends StatelessWidget {
           ),
           itemCount: _gridItems.length,
           itemBuilder: (context, index) => Card(
-            elevation: 6,
+            elevation: 12,
             child: _gridItems[index],
           ),
         ),
@@ -349,7 +349,7 @@ class SliverGridFailPage extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate(
                       (ctx, index) {
                     return Card(
-                      elevation: 6,
+                      elevation: 12,
                       child: _gridItems[index],
                     );
                   },
@@ -421,7 +421,7 @@ class SliverGridPage extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate(
                       (ctx, index) {
                     return Card(
-                      elevation: 6,
+                      elevation: 12,
                       child: _gridItems[index],
                     );
                   },
@@ -513,7 +513,7 @@ class SliverGridExtPage extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate(
                       (ctx, index) {
                     return Card(
-                      elevation: 6,
+                      elevation: 12,
                       child: _gridItems[index],
                     );
                   },
