@@ -34,6 +34,7 @@ import 'package:startupnamer/CustomScreen/SheetAnimation.dart';
 import 'package:startupnamer/CustomScreen/SliverPadding.dart';
 import 'package:startupnamer/Group/FloatGridList.dart';
 import 'package:startupnamer/Music/AppleMusic.dart';
+import 'package:startupnamer/Music/PlaySound.dart';
 import 'package:startupnamer/Starter/Home.dart';
 
 void main() => runApp(MyApp());
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'no title',
       theme: ThemeData(fontFamily: 'Roboto'),
-      home: AudioScreen(),
+      home: PlaySoundScreen(),
     );
   }
 }
