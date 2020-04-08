@@ -86,6 +86,7 @@ class _PlaySoundScreenState extends State<PlaySoundScreen> {
 
   Widget LocalAudio() {
     return _tab([
+      _btn('Remote URL PLay', () => advancedPlayer.play('https://firebasestorage.googleapis.com/v0/b/goshuin-dev.appspot.com/o/uminokoe.mp3?alt=media&token=229e469e-af07-40a3-bc4f-80567e89ba12')),
       _btn('Play', () => audioCache.play('uminokoe.mp3')),
       _btn('Pause', () => advancedPlayer.pause()),
       _btn(('Stop'), () => advancedPlayer.stop()),
