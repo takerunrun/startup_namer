@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:startupnamer/Audio/AudioScreen.dart';
+import 'package:startupnamer/Audio/State.dart';
 import 'package:startupnamer/Cookbook/Animation/AnimatedContainer.dart';
 import 'package:startupnamer/Cookbook/Animation/AnimatedOpacity.dart';
 import 'package:startupnamer/Cookbook/Animation/PhysicsCard.dart';
@@ -46,8 +47,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'no title',
-      theme: ThemeData(fontFamily: 'Roboto'),
-      home: ProviderEx(),
+      theme: ThemeData(fontFamily: 'NotoSansJP'),
+      home: PlaySoundScreen(),
     );
   }
 }
